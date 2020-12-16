@@ -1,7 +1,8 @@
 #pragma once
 
 namespace ModernUI {
-
+	using namespace MySql::Data;
+	using namespace MySql::Data::MySqlClient;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -14,6 +15,7 @@ namespace ModernUI {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+		MySqlConnection ^conecc = gcnew MySqlConnection("server=db4free.net;Uid=edwin14;Password=andres456;Database=bd_edanv;Port=3306");
 	public:
 		MyForm(void)
 		{
@@ -35,6 +37,7 @@ namespace ModernUI {
 				delete components;
 			}
 		}
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Label^ label2;
@@ -53,6 +56,9 @@ namespace ModernUI {
 	private: System::Windows::Forms::Label^ label7;
 
 	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Label^ estado_c;
+
 
 
 
@@ -85,6 +91,8 @@ namespace ModernUI {
 			this->pnlTerms = (gcnew System::Windows::Forms::Panel());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->estado_c = (gcnew System::Windows::Forms::Label());
 			this->pnlTerms->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -240,7 +248,7 @@ namespace ModernUI {
 			// 
 			this->pnlTerms->Controls->Add(this->button3);
 			this->pnlTerms->Controls->Add(this->label7);
-			this->pnlTerms->Location = System::Drawing::Point(268, 91);
+			this->pnlTerms->Location = System::Drawing::Point(459, 12);
 			this->pnlTerms->Name = L"pnlTerms";
 			this->pnlTerms->Size = System::Drawing::Size(613, 491);
 			this->pnlTerms->TabIndex = 8;
@@ -274,12 +282,39 @@ namespace ModernUI {
 			this->label7->Text = L"Terms and Conditions";
 			this->label7->Click += gcnew System::EventHandler(this, &MyForm::label7_Click);
 			// 
+			// button4
+			// 
+			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.25F));
+			this->button4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(255)));
+			this->button4->Location = System::Drawing::Point(289, 50);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(103, 43);
+			this->button4->TabIndex = 9;
+			this->button4->Text = L"conexion";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
+			// 
+			// estado_c
+			// 
+			this->estado_c->AutoSize = true;
+			this->estado_c->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.25F));
+			this->estado_c->Location = System::Drawing::Point(315, 121);
+			this->estado_c->Name = L"estado_c";
+			this->estado_c->Size = System::Drawing::Size(47, 25);
+			this->estado_c->TabIndex = 10;
+			this->estado_c->Text = L"N/A";
+			this->estado_c->Click += gcnew System::EventHandler(this, &MyForm::label8_Click_1);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DimGray;
 			this->ClientSize = System::Drawing::Size(613, 491);
+			this->Controls->Add(this->estado_c);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->pnlTerms);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label6);
@@ -304,6 +339,7 @@ namespace ModernUI {
 			this->PerformLayout();
 
 		}
+
 #pragma endregion
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -386,6 +422,19 @@ private: System::Void textBox1_KeyDown(System::Object^ sender, System::Windows::
 	if (e->KeyValue == (int)Keys::Enter || e->KeyValue == (int)Keys::Tab) {
 		textBox2->Focus();
 		}
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	try {
+		conecc->Open();
+		estado_c->Text = "Correcto";
+	}
+	catch (...){
+		conecc->Close();
+		estado_c->Text = "No hay conexion";
+	}
+}
+private: System::Void label8_Click_1(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
