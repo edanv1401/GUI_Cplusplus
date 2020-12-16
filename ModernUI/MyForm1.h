@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 namespace ModernUI {
 	using namespace MySql::Data;
@@ -15,12 +16,14 @@ namespace ModernUI {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
-		MySqlConnection ^conecc = gcnew MySqlConnection("server=db4free.net;Uid=edwin14;Password=andres456;Database=bd_edanv;Port=3306");
+	MySqlConnection^ conecc = gcnew MySqlConnection("server=freedb.tech;port=3306;database=freedbtech_bd_edanv;uid=freedbtech_edanv;password=andres456");
+
 	public:
 		MyForm(void)
 		{
 			InitializeComponent();
 			pnlTerms->Hide();
+			registerPanel->Hide();
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -56,8 +59,19 @@ namespace ModernUI {
 	private: System::Windows::Forms::Label^ label7;
 
 	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::Button^ button4;
+
 	private: System::Windows::Forms::Label^ estado_c;
+	private: System::Windows::Forms::Panel^ registerPanel;
+
+
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::TextBox^ Register_pass;
+	private: System::Windows::Forms::TextBox^ Register_name;
+	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::Label^ label10;
+	private: System::Windows::Forms::Label^ label9;
 
 
 
@@ -89,11 +103,20 @@ namespace ModernUI {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->pnlTerms = (gcnew System::Windows::Forms::Panel());
+			this->registerPanel = (gcnew System::Windows::Forms::Panel());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->Register_pass = (gcnew System::Windows::Forms::TextBox());
+			this->Register_name = (gcnew System::Windows::Forms::TextBox());
+			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->estado_c = (gcnew System::Windows::Forms::Label());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->pnlTerms->SuspendLayout();
+			this->registerPanel->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -103,9 +126,9 @@ namespace ModernUI {
 			this->label1->ForeColor = System::Drawing::Color::White;
 			this->label1->Location = System::Drawing::Point(22, 49);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(146, 44);
+			this->label1->Size = System::Drawing::Size(113, 44);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Sign in ";
+			this->label1->Text = L"Login";
 			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
 			// 
 			// textBox1
@@ -196,7 +219,7 @@ namespace ModernUI {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(92, 37);
 			this->button1->TabIndex = 3;
-			this->button1->Text = L"Sign in";
+			this->button1->Text = L"Login";
 			this->button1->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageAboveText;
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
@@ -246,13 +269,75 @@ namespace ModernUI {
 			// 
 			// pnlTerms
 			// 
+			this->pnlTerms->Controls->Add(this->registerPanel);
 			this->pnlTerms->Controls->Add(this->button3);
 			this->pnlTerms->Controls->Add(this->label7);
-			this->pnlTerms->Location = System::Drawing::Point(459, 12);
+			this->pnlTerms->Location = System::Drawing::Point(390, 81);
 			this->pnlTerms->Name = L"pnlTerms";
 			this->pnlTerms->Size = System::Drawing::Size(613, 491);
 			this->pnlTerms->TabIndex = 8;
 			this->pnlTerms->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::pnlTerms_Paint);
+			// 
+			// registerPanel
+			// 
+			this->registerPanel->Controls->Add(this->label12);
+			this->registerPanel->Controls->Add(this->label11);
+			this->registerPanel->Controls->Add(this->label10);
+			this->registerPanel->Controls->Add(this->label9);
+			this->registerPanel->Controls->Add(this->label8);
+			this->registerPanel->Controls->Add(this->Register_pass);
+			this->registerPanel->Controls->Add(this->Register_name);
+			this->registerPanel->Controls->Add(this->button4);
+			this->registerPanel->Location = System::Drawing::Point(249, 96);
+			this->registerPanel->Name = L"registerPanel";
+			this->registerPanel->Size = System::Drawing::Size(613, 491);
+			this->registerPanel->TabIndex = 3;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F));
+			this->label8->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->label8->Location = System::Drawing::Point(137, 300);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(355, 13);
+			this->label8->TabIndex = 3;
+			this->label8->Text = L"__________________________________________________________";
+			this->label8->Click += gcnew System::EventHandler(this, &MyForm::label8_Click_2);
+			// 
+			// Register_pass
+			// 
+			this->Register_pass->BackColor = System::Drawing::Color::DimGray;
+			this->Register_pass->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->Register_pass->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.25F));
+			this->Register_pass->Location = System::Drawing::Point(140, 278);
+			this->Register_pass->Name = L"Register_pass";
+			this->Register_pass->Size = System::Drawing::Size(348, 28);
+			this->Register_pass->TabIndex = 2;
+			// 
+			// Register_name
+			// 
+			this->Register_name->BackColor = System::Drawing::Color::DimGray;
+			this->Register_name->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->Register_name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.25F));
+			this->Register_name->Location = System::Drawing::Point(140, 165);
+			this->Register_name->Name = L"Register_name";
+			this->Register_name->Size = System::Drawing::Size(348, 28);
+			this->Register_name->TabIndex = 1;
+			// 
+			// button4
+			// 
+			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.25F));
+			this->button4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->button4->Location = System::Drawing::Point(263, 390);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(105, 41);
+			this->button4->TabIndex = 0;
+			this->button4->Text = L"Sign in";
+			this->button4->UseVisualStyleBackColor = true;
 			// 
 			// button3
 			// 
@@ -275,37 +360,73 @@ namespace ModernUI {
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.25F));
 			this->label7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
 				static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			this->label7->Location = System::Drawing::Point(174, 78);
+			this->label7->Location = System::Drawing::Point(258, 187);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(261, 29);
 			this->label7->TabIndex = 0;
 			this->label7->Text = L"Terms and Conditions";
 			this->label7->Click += gcnew System::EventHandler(this, &MyForm::label7_Click);
 			// 
-			// button4
-			// 
-			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.25F));
-			this->button4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
-				static_cast<System::Int32>(static_cast<System::Byte>(255)));
-			this->button4->Location = System::Drawing::Point(289, 50);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(103, 43);
-			this->button4->TabIndex = 9;
-			this->button4->Text = L"conexion";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
-			// 
 			// estado_c
 			// 
 			this->estado_c->AutoSize = true;
 			this->estado_c->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.25F));
-			this->estado_c->Location = System::Drawing::Point(315, 121);
+			this->estado_c->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->estado_c->Location = System::Drawing::Point(321, 68);
 			this->estado_c->Name = L"estado_c";
 			this->estado_c->Size = System::Drawing::Size(47, 25);
 			this->estado_c->TabIndex = 10;
 			this->estado_c->Text = L"N/A";
 			this->estado_c->Click += gcnew System::EventHandler(this, &MyForm::label8_Click_1);
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F));
+			this->label9->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->label9->Location = System::Drawing::Point(137, 190);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(355, 13);
+			this->label9->TabIndex = 4;
+			this->label9->Text = L"__________________________________________________________";
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18.25F));
+			this->label10->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->label10->Location = System::Drawing::Point(242, 68);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(167, 29);
+			this->label10->TabIndex = 5;
+			this->label10->Text = L"Register User";
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.25F));
+			this->label11->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->label11->Location = System::Drawing::Point(140, 142);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(86, 20);
+			this->label11->TabIndex = 6;
+			this->label11->Text = L"Username";
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12.25F));
+			this->label12->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->label12->Location = System::Drawing::Point(140, 249);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(83, 20);
+			this->label12->TabIndex = 7;
+			this->label12->Text = L"Password";
 			// 
 			// MyForm
 			// 
@@ -313,8 +434,6 @@ namespace ModernUI {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DimGray;
 			this->ClientSize = System::Drawing::Size(613, 491);
-			this->Controls->Add(this->estado_c);
-			this->Controls->Add(this->button4);
 			this->Controls->Add(this->pnlTerms);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->label6);
@@ -327,14 +446,18 @@ namespace ModernUI {
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label1);
+			this->Controls->Add(this->estado_c);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::MyForm_MouseDown);
 			this->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::MyForm_MouseMove);
 			this->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::MyForm_MouseUp);
 			this->pnlTerms->ResumeLayout(false);
 			this->pnlTerms->PerformLayout();
+			this->registerPanel->ResumeLayout(false);
+			this->registerPanel->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -346,6 +469,7 @@ namespace ModernUI {
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*
 		if (textBox1->Text == "admin") {
 			if (textBox2->Text == "root") {
 				Application::Exit();
@@ -357,7 +481,26 @@ namespace ModernUI {
 		else {
 			MessageBox::Show("Incorrect Username or Password", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
-		
+		*/
+		try {
+			conecc->Open();
+			String^ username_admin = textBox1->Text;
+			String^ password_adlmin = textBox2->Text;
+			MySqlCommand^ adapter = gcnew MySqlCommand("SELECT username_admin,password_adlmin from admins WHERE username_admin='"+username_admin+"' and password_adlmin='"+password_adlmin+"'",conecc);
+			MySqlDataReader^ rd= adapter->ExecuteReader();
+			if (rd->Read()) {
+				MessageBox::Show("Login Exitoso");
+				estado_c->Text = "Logeado";
+			}
+			else {
+				estado_c->Text = "Datos incorrectos";
+				MessageBox::Show("Datos Incorrectos");
+			}
+			conecc->Close();
+		}
+		catch (Exception^ e) {
+			MessageBox::Show(e->ToString());
+		}
 	
 	}
 private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -423,18 +566,21 @@ private: System::Void textBox1_KeyDown(System::Object^ sender, System::Windows::
 		textBox2->Focus();
 		}
 }
-private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-
+private: System::Void label8_Click_1(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	try {
 		conecc->Open();
-		estado_c->Text = "Correcto";
-	}
-	catch (...){
+		//MySqlDataAdapter^ adapter = gcnew MySqlDataAdapter("SELECT * FROM bd_edanv",conecc);
+		estado_c->Text = "Conectado";
 		conecc->Close();
-		estado_c->Text = "No hay conexion";
+	}
+	catch (Exception^ e) {
+		MessageBox::Show("failed conected data");
 	}
 }
-private: System::Void label8_Click_1(System::Object^ sender, System::EventArgs^ e) {
+
+private: System::Void label8_Click_2(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

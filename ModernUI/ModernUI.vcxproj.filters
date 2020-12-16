@@ -27,4 +27,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="loginController.cpp">
+      <Filter>Archivos de encabezado</Filter>
+    </None>
+  </ItemGroup>
 </Project>
